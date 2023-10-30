@@ -8,13 +8,14 @@ export default [
     input: "src/lib/index.ts",
     plugins: [
       ts({tsconfig: "tsconfig.json"}),
-      commonjs(),
+      commonjs({sourceMap: false}),
       svg()
     ],
     output: [
       {
         file: pkg.main,
-        format: "cjs"
+        format: "cjs",
+        sourcemap: false,
       },
       {
         file: pkg.module,
