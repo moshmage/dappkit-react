@@ -1,36 +1,8 @@
 {
   "name": "@layerx-labs/dappkit-react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "dependencies": {
-    "@taikai/dappkit": "^2.3.1",
-    "@taikai/rocket-kit": "^3.0.6",
-    "@web3-react/coinbase-wallet": "^8.2.3",
-    "@web3-react/core": "^8.2.3",
-    "@web3-react/gnosis-safe": "^8.2.4",
-    "@web3-react/metamask": "^8.2.4",
-    "@web3-react/walletconnect-v2": "^8.5.1",
-    "styled-components": "^6.0.9",
-    "zustand": "^4.4.3"
-  },
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "build-lib": "rollup --config rollup.config.mjs",
-    "test": "react-app-rewired test --env=jsdom --silent=false --watchAll=false"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+  "scripts": {},
   "browserslist": {
     "production": [
       ">0.2%",
@@ -43,6 +15,17 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "@taikai/dappkit": "^2.3.1",
+    "@taikai/rocket-kit": "^3.0.6",
+    "@web3-react/coinbase-wallet": "^8.2.3",
+    "@web3-react/core": "^8.2.3",
+    "@web3-react/gnosis-safe": "^8.2.4",
+    "@web3-react/metamask": "^8.2.4",
+    "@web3-react/walletconnect-v2": "^8.5.1",
+    "styled-components": "^6.0.9",
+    "zustand": "^4.4.3"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.5",
     "@svgr/webpack": "^8.1.0",
@@ -50,24 +33,18 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.58",
-    "@types/react": "^18.2.25",
-    "@types/react-dom": "^18.2.11",
+    "@types/react": "^18.2.37",
     "@types/styled-components": "^5.1.28",
-    "react-app-rewired": "^2.2.1",
-    "remove": "^0.1.5",
+    "react": "^18.2.0",
     "rollup": "^4.0.2",
-    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-ts": "^3.4.5",
-    "text-encoding-shim": "^1.0.5",
     "typescript": "^4.9.5"
   },
   "files": [
     "dist",
     "README.MD"
   ],
-  "types": "dist/index.esm.d.ts",
   "homepage": "https://moshmage.github.io/dappkit-react",
   "jest": {
     "collectCoverage": true,

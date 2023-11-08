@@ -1,10 +1,10 @@
 import React from 'react';
-import {fireEvent, render, renderHook, screen, waitFor} from '@testing-library/react';
-import {ConnectorButton} from "../../../../lib";
-import {ModalModes} from "../../../../lib/types/wallet-selector";
-import ethereum from "../../../../__mocks__/ethereum";
-import _Connector from "../../../../__mocks__/connector/connector";
-import {metamaskWallet, hooks} from "../../../../lib/connectors/wallets/metamask-wallet";
+import {fireEvent, render, screen, waitFor} from '@testing-library/react';
+import {ConnectorButton} from "../../../";
+import {ModalModes} from "../../../types/wallet-selector";
+import ethereum from "../../../__mocks__/ethereum";
+import _Connector from "../../../__mocks__/connector/connector";
+import {hooks, metamaskWallet} from "../../../connectors/wallets/metamask-wallet";
 
 describe(`ConnectorButton`, () => {
   beforeAll(() => {
