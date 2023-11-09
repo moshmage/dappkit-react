@@ -5,6 +5,7 @@ import ethereum from "../../../__mocks__/ethereum";
 import _Connector from "../../../__mocks__/connector/connector";
 import {hooks, metamaskWallet} from "../../../connectors/wallets/metamask-wallet";
 import '@testing-library/jest-dom';
+import {expect} from "@jest/globals";
 
 describe(`ConnectorButton`, () => {
   beforeAll(() => {
@@ -94,11 +95,26 @@ describe(`ConnectorButton`, () => {
     const {rerender} = render(button());
 
     fireEvent.click(screen.getByText(/Metamask/));
+
+    await waitFor(() => {
+      expect(onConnectorConnect).toHaveBeenCalled();
+    })
+
     isActive = true;
     activeChainId = 1;
+
     rerender(button());
+
     await waitFor(() => {
       expect(screen.getByRole("button", {name: /Disconnect/})).toBeInTheDocument();
     });
+
+    fireEvent.click(screen.getByText(/Disconnect/));
+
+    await waitFor(() => {
+      expect(onConnectorDisconnect).toHaveBeenCalled();
+    });
+
+
   })
 })
