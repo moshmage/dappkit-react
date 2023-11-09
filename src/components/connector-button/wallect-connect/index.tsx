@@ -1,18 +1,17 @@
+import React from "react";
 import {CustomConnectorButtonProps} from "../../../types/custom-connector-button";
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
-import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
+import {useDappkitConnection} from "../../../custom-hooks/use-dappkit";
 import {ConnectorButton} from "../index";
 import {hooks, walletConnect} from "../../../connectors/wallets/wallet-connect";
-import Logo from "./logo.svg";
-import React from "react";
+import WalletConnectLogo from "./logo";
 
-export function WalletConnectButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
+export function WalletConnectButton({onConnectorConnect, onConnectorDisconnect}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);
-  const {chainId, connected} = useDappkitConnectionInfo();
+  const {chainId, connected} = useDappkitConnection();
 
   return <ConnectorButton connector={walletConnect}
-                          logo={<Logo/>}
-                          variant={variant}
+                          logo={<WalletConnectLogo />}
                           activeChainId={chainId || 0}
                           onConnectorConnect={onConnectorConnect}
                           onConnectorDisconnect={onConnectorDisconnect}

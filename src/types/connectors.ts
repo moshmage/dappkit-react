@@ -1,6 +1,1 @@
-export enum ConnectorsNames {
-  Coinbase = "Coinbase",
-  Metamask = "Metamask",
-  GnosisSafe = "GnosisSafe",
-  WalletConnect = "WalletConnect",
-}
+export type ConnectorsNames = "Metamask" | "Coinbase" | "GnosisSafe" | "WalletConnect" | string;

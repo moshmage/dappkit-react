@@ -30,7 +30,7 @@ export const useDappkit = create<UseDappkit>()((set, get) => ({
   connection: null,
 }))
 
-export const useDappkitConnectionInfo = () => {
+export const useDappkitConnection = () => {
   const [chainId, setChainId] = useState(0);
   const [address, setAddress] = useState("");
   const [connected, setConnected] = useState<boolean>(false);
@@ -54,5 +54,5 @@ export const useDappkitConnectionInfo = () => {
 
   useEffect(() => { connect() }, [connection])
 
-  return {chainId, address, connected}
+  return {chainId, address, connected, connection}
 }

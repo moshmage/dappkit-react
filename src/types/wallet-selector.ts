@@ -1,14 +1,10 @@
 import {ConnectorsNames} from "./connectors";
 
-export enum ModalModes {
-  Modal = "modal",
-  Sidebar = "sidebar"
-}
-
 export type WalletSelectorProps = {
-  showWallets: ConnectorsNames[];
-  showModal: boolean;
-  modalCloseClicked:() => void
-  modalTitle?: string;
-  mode?: ModalModes
+  availableWallets: ConnectorsNames[];
+
+  showAddress?: boolean;
+
+  /** some providers do not have a "disconnect" event and thus might need reload */
+  reloadOnProviderDisconnect?: boolean;
 }

@@ -5,7 +5,7 @@ $ npm install -s @layerx-labs/dappkit-react
 
 ## Usage
 
-### Custom Hooks
+### Available hooks
 ```tsx
 import {useDappkitConnection, useDappkitConnectionInfo} from "./use-dappkit";
 // ... your component
@@ -24,11 +24,20 @@ import {WalletSelector, ConnectorsNames} from "@layerx-labs/dappkit-react";
 
 const [showModal, setShowModal] = useState(false);
 // .. your component
-<WalletSelector modalCloseClicked={() => setShowModal(false)}
-                showWallets={[ConnectorsNames.Metamask, ConnectorsNames.Coinbase]}
-                showModal={showModal}/>
+<WalletSelector availableWallets={[ConnectorsNames.Metamask, ConnectorsNames.Coinbase]}
+                showAddress={true} 
+                reloadOnProviderDisconnect={true}/>
 ```
-> On wallet selection, `WalletSelector` component will update the values of useDappkitConnection/Info()
+> On wallet selection, `WalletSelector` component will update the values of `useDappkitConnectionInfo()`
+```ts
+import {useDappkitConnectionInfo} from "@layerx-labs/dappkit-react";
+
+const {address} = useDappkitConnectionInfo();
+
+useEffect(() => {
+  console.log(`Connected address`, address);
+}, [address])
+```
 
 **Supported Wallets**
 
@@ -57,16 +66,16 @@ function useERC20(tokenAddress: string) {
       return;
     }
 
-    setToken(new ERC20(connection, "0xTokenAddress"));
+    setToken(new ERC20(connection, tokenAddress));
   }, [connection]);
 
-  function sendToken(amount: number, address: string) {
+  function transferTokenAmount(amount: number, address: string) {
     if (!token)
       return;
 
     return token.transferTokenAmount(address, amount);
   }
   
-  return {token, sendToken};
+  return {token, transferTokenAmount};
 }
 ```

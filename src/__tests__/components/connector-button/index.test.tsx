@@ -1,7 +1,6 @@
 import React from 'react';
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import {ConnectorButton} from "../../../";
-import {ModalModes} from "../../../types/wallet-selector";
 import ethereum from "../../../__mocks__/ethereum";
 import _Connector from "../../../__mocks__/connector/connector";
 import {hooks, metamaskWallet} from "../../../connectors/wallets/metamask-wallet";
@@ -55,8 +54,7 @@ describe(`ConnectorButton`, () => {
                                           isActive={isActive}
                                           activeChainId={activeChainId}
                                           onConnectorConnect={onConnectorConnect}
-                                          onConnectorDisconnect={onConnectorDisconnect}
-                                          variant={ModalModes.Sidebar}/>
+                                          onConnectorDisconnect={onConnectorDisconnect}/>
 
     const {rerender} = render(button());
 
@@ -90,8 +88,7 @@ describe(`ConnectorButton`, () => {
                                           isActive={isActive}
                                           activeChainId={activeChainId || 0}
                                           onConnectorConnect={onConnectorConnect}
-                                          onConnectorDisconnect={onConnectorDisconnect}
-                                          variant={ModalModes.Sidebar}/>
+                                          onConnectorDisconnect={onConnectorDisconnect}/>
 
     const {rerender} = render(button());
 

@@ -3,7 +3,7 @@ import React, {useCallback, useState} from "react";
 import {provider as Provider} from "web3-core";
 import {getConnectorName} from "../../connectors/wallets/get-connector-name";
 
-export function ConnectorButton({activeChainId, setError, connector, isActive, error, onConnectorConnect, logo, onConnectorDisconnect, variant}: ConnectorButtonProps) {
+export function ConnectorButton({activeChainId, setError, connector, isActive, error, onConnectorConnect, logo, onConnectorDisconnect}: ConnectorButtonProps) {
   const [desiredChainId, setDesiredChainId] = useState<number|undefined>(undefined);
 
   const switchChain = useCallback(
