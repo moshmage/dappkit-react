@@ -4,6 +4,7 @@ import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 import {ConnectorButton} from "../index";
 import {hooks, walletConnect} from "../../../connectors/wallets/wallet-connect";
 import Logo from "./logo.svg";
+import React from "react";
 
 export function WalletConnectButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);

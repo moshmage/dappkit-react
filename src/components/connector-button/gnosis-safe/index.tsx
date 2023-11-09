@@ -4,6 +4,7 @@ import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 import {gnosisSafe, hooks} from "../../../connectors/wallets/gnosis-safe";
 import {ConnectorButton} from "../index";
 import Logo from "./logo.svg";
+import React from "react";
 
 export function GnosisSafeButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);

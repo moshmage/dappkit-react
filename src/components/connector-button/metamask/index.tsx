@@ -4,6 +4,7 @@ import {hooks, metamaskWallet} from "../../../connectors/wallets/metamask-wallet
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 import Logo from "./logo.svg";
 import {ConnectorButton} from "../index";
+import React from "react";
 
 export function MetamaskButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);

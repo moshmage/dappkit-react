@@ -4,6 +4,7 @@ import {CustomConnectorButtonProps} from "../../../types/custom-connector-button
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 import Logo from "./logo.svg";
 import {ConnectorButton} from "../index";
+import React from "react";
 
 export function CoinbaseButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);

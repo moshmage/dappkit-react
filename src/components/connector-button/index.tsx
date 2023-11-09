@@ -1,26 +1,7 @@
 import type {ConnectorButtonProps} from "../../types/connector-button";
-import {useCallback, useState} from "react";
+import React, {useCallback, useState} from "react";
 import {provider as Provider} from "web3-core";
 import {getConnectorName} from "../../connectors/wallets/get-connector-name";
-import styled from "styled-components";
-import {ModalModes} from "../../types/wallet-selector";
-
-const Action =
-  styled.button`
-    width: ${(props: {variant: ModalModes}) => props.variant === ModalModes.Sidebar ? 392 : 163 }px;
-    height: 36px;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #D9D4ED;
-    gap: 8px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    flex-shrink: 1;
-    &:hover {
-      cursor: pointer;
-      background-color: rgba(0,0,0, .05)
-    }`;
 
 export function ConnectorButton({activeChainId, setError, connector, isActive, error, onConnectorConnect, logo, onConnectorDisconnect, variant}: ConnectorButtonProps) {
   const [desiredChainId, setDesiredChainId] = useState<number|undefined>(undefined);
@@ -66,9 +47,9 @@ export function ConnectorButton({activeChainId, setError, connector, isActive, e
   return <div style={{margin: "1rem 0 0", display: "inline-flex", alignItems: "center"}}>
     {isActive
       ? error
-        ? (<Action variant={variant} onClick={() => retry()} children="try again?"/>)
-        : (<Action variant={variant} onClick={() => onDisconnectClick()} children="Disconnect"/>)
-      : (<Action variant={variant} onClick={() => onSelectChain(1)} children={error ? "try again?" : <>{logo} {getConnectorName(connector) || "Unnamed Implementation"}</>}/>)
+        ? (<button onClick={() => retry()} children="try again?"/>)
+        : (<button onClick={() => onDisconnectClick()} children="Disconnect"/>)
+      : (<button onClick={() => onSelectChain(1)} children={error ? "try again?" : <>{logo} {getConnectorName(connector) || "Unnamed Implementation"}</>}/>)
     }
   </div>
 }
