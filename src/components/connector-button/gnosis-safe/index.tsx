@@ -6,13 +6,12 @@ import {gnosisSafe, hooks} from "../../../connectors/wallets/gnosis-safe";
 import {ConnectorButton} from "../index";
 import SafeLogo from "./logo";
 
-export function GnosisSafeButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
+export function GnosisSafeButton({onConnectorConnect, onConnectorDisconnect}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnection();
 
   return <ConnectorButton connector={gnosisSafe}
                           logo={<SafeLogo />}
-                          variant={variant}
                           activeChainId={chainId || 0}
                           onConnectorConnect={onConnectorConnect}
                           onConnectorDisconnect={onConnectorDisconnect}

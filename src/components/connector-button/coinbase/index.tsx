@@ -6,13 +6,12 @@ import {useDappkitConnection} from "../../../custom-hooks/use-dappkit";
 import {ConnectorButton} from "../index";
 import CoinbaseLogo from "./logo";
 
-export function CoinbaseButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
+export function CoinbaseButton({onConnectorConnect, onConnectorDisconnect}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnection();
 
   return <ConnectorButton activeChainId={chainId || 0}
                           logo={<CoinbaseLogo />}
-                          variant={variant}
                           setError={setError}
                           onConnectorConnect={onConnectorConnect}
                           onConnectorDisconnect={onConnectorDisconnect}
