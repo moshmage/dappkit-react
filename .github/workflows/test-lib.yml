@@ -5,8 +5,7 @@ on:
     branches:
       - '*'
     paths:
-      - 'src/lib/**'
-      - 'src/__tests__/**'
+      - 'src/**'
 
 jobs:
   test-lib:

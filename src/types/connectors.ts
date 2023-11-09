@@ -1,0 +1,1 @@
+export type ConnectorsNames = "Metamask" | "Coinbase" | "GnosisSafe" | "WalletConnect" | string;
