@@ -1,6 +1,6 @@
 {
   "name": "@layerx-labs/dappkit-react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "scripts": {
     "pre:bundle": "rimraf dist/",
@@ -27,7 +27,7 @@
     "@web3-react/metamask": "^8.2.4",
     "@web3-react/walletconnect-v2": "^8.5.1",
     "ts-jest": "^29.1.1",
-    "zustand": "4.4.0"
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.23.3",
@@ -60,7 +60,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
+    "dist/",
     "README.MD"
   ],
   "homepage": "https://moshmage.github.io/dappkit-react",

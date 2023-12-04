@@ -3,7 +3,7 @@ import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import {ConnectorButton} from "../../../";
 import ethereum from "../../../__mocks__/ethereum";
 import _Connector from "../../../__mocks__/connector/connector";
-import {hooks, metamaskWallet} from "../../../connectors/wallets/metamask-wallet";
+import {metamaskWallet} from "../../../connectors/wallets/metamask-wallet";
 import '@testing-library/jest-dom';
 import {expect} from "@jest/globals";
 
@@ -75,8 +75,6 @@ describe(`ConnectorButton`, () => {
   })
 
   it(`Connects`, async () => {
-    const {useChainId, useIsActive} = hooks;
-
     let error: Error|undefined = undefined;
     let isActive = false;
     let activeChainId = 0;

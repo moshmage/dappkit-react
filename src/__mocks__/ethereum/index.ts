@@ -14,8 +14,10 @@ export default {
         return 1;
       case 'wallet_switchEthereumChain':
         return true;
+      case 'net_version':
+        return 1;
       default:
-        throw Error(`Unknown request: ${request.method}`)
+        throw Error(`MOCKED_ETH Unknown request: ${request.method}`)
     }
   }
 }
