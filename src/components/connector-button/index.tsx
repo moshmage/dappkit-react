@@ -23,7 +23,7 @@ export function ConnectorButton({activeChainId, setError, connector, isActive, e
       } catch (e: any) {
         connector?.resetState?.();
         setError(e);
-        console.error(e);
+        //console.error(e);
       }
     }, [connector, activeChainId, setError, onConnectorConnect]
   )

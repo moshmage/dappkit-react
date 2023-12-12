@@ -1,5 +1,5 @@
 import {WalletSelectorProps} from "../../types/wallet-selector";
-import {useConnection, useDappkit} from "../../custom-hooks/use-dappkit";
+import {useDappkit} from "../../custom-hooks/use-dappkit";
 import {CoinbaseButton} from "../connector-button/coinbase";
 import {MetamaskButton} from "../connector-button/metamask";
 import {GnosisSafeButton} from "../connector-button/gnosis-safe";
@@ -8,11 +8,10 @@ import {WalletConnectButton} from "../connector-button/wallect-connect";
 
 export function WalletSelector({availableWallets = [], showAddress = true, onConnectorConnect, onConnectorDisconnect}: WalletSelectorProps) {
   const {address} = useDappkit();
-  const {hooks} = useConnection();
 
   return <>
     <div className="wallet-selector-container">
-      <div><span className="wallet-connected-address">{hooks?.useAccount?.()}</span></div>
+      <div><span className="wallet-connected-address">{address}</span></div>
       {(!availableWallets.length)
         ? <div>
           <div className="wallet-selector-no-options">No allowed list provided</div>
