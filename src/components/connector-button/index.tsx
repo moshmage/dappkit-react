@@ -2,33 +2,34 @@ import type {ConnectorButtonProps} from "../../types/connector-button";
 import React, {useCallback, useState} from "react";
 import {provider as Provider} from "web3-core";
 import {getConnectorName} from "../../connectors/wallets/get-connector-name";
+import {useDappkit} from "../../custom-hooks/use-dappkit";
 
 export function ConnectorButton({activeChainId, setError, connector, isActive, error, onConnectorConnect, logo, onConnectorDisconnect}: ConnectorButtonProps) {
-  const [desiredChainId, setDesiredChainId] = useState<number|undefined>(undefined);
+  const {setProvider,} = useDappkit()
+
 
   const switchChain = useCallback(
     async (_desiredChainId?: number) => {
 
       try {
-        if ((_desiredChainId === activeChainId) || (_desiredChainId === -1 && activeChainId !== undefined)) {
-          setError(undefined);
-          return;
-        }
+        setError(undefined);
 
         await connector.activate(_desiredChainId);
-        if (connector.provider)
+        if (connector.provider) {
+          await setProvider(connector.provider as unknown as Provider);
           onConnectorConnect?.(connector.provider as unknown as Provider);
-        else throw new Error(`Failed to get a provider, make sure your connector has one!`)
+        } else throw new Error(`Failed to get a provider, make sure your connector has one!`)
 
       } catch (e: any) {
         connector?.resetState?.();
         setError(e);
+        //console.error(e);
       }
     }, [connector, activeChainId, setError, onConnectorConnect]
   )
 
   async function retry() {
-    await switchChain(desiredChainId!)
+    await switchChain(1)
   }
 
   async function onDisconnectClick() {
@@ -36,7 +37,7 @@ export function ConnectorButton({activeChainId, setError, connector, isActive, e
       void connector.deactivate();
     else void connector?.resetState();
 
-    setDesiredChainId(undefined);
+    setProvider(null);
     onConnectorDisconnect?.()
   }
 

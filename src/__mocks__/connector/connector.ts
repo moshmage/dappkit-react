@@ -1,4 +1,4 @@
-import {Actions, Connector} from "@web3-react/types";
+import {Actions, Connector, Provider} from "@web3-react/types";
 
 export default class _Connector extends Connector {
   constructor(readonly actions: Actions, readonly setError: ((error: Error|undefined) => void)) {
@@ -12,4 +12,6 @@ export default class _Connector extends Connector {
   deactivate(): Promise<void> | void {
     this.actions.resetState();
   }
+
+
 }
