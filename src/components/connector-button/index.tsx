@@ -4,7 +4,16 @@ import {provider as Provider} from "web3-core";
 import {getConnectorName} from "../../connectors/wallets/get-connector-name";
 import {useDappkit} from "../../custom-hooks/use-dappkit";
 
-export function ConnectorButton({activeChainId, setError, connector, isActive, error, onConnectorConnect, logo, onConnectorDisconnect}: ConnectorButtonProps) {
+export function ConnectorButton({
+                                  activeChainId,
+                                  setError,
+                                  connector,
+                                  isActive,
+                                  error,
+                                  onConnectorConnect,
+                                  logo,
+                                  onConnectorDisconnect,
+                                  defaultChain = 1}: ConnectorButtonProps) {
   const {setProvider,} = useDappkit()
 
 

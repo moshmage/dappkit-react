@@ -6,7 +6,7 @@ import {GnosisSafeButton} from "../connector-button/gnosis-safe";
 import React from "react";
 import {WalletConnectButton} from "../connector-button/wallect-connect";
 
-export function WalletSelector({availableWallets = [], showAddress = true, onConnectorConnect, onConnectorDisconnect}: WalletSelectorProps) {
+export function WalletSelector({availableWallets = [], showAddress = true, onConnectorConnect, onConnectorDisconnect, defaultChain}: WalletSelectorProps) {
   const {address} = useDappkit();
 
   return <>
@@ -20,19 +20,23 @@ export function WalletSelector({availableWallets = [], showAddress = true, onCon
       }
       <div className="wallet-selector-buttons">
         {availableWallets.includes("Coinbase") ?
-          <CoinbaseButton onConnectorConnect={onConnectorConnect}
+          <CoinbaseButton defaultChain={defaultChain}
+                          onConnectorConnect={onConnectorConnect}
                           onConnectorDisconnect={onConnectorDisconnect}/> : null}
 
         {availableWallets.includes("Metamask") ?
-          <MetamaskButton onConnectorConnect={onConnectorConnect}
+          <MetamaskButton defaultChain={defaultChain}
+                          onConnectorConnect={onConnectorConnect}
                           onConnectorDisconnect={onConnectorDisconnect}/> : null}
 
         {availableWallets.includes("GnosisSafe") ?
-          <GnosisSafeButton onConnectorConnect={onConnectorConnect}
+          <GnosisSafeButton defaultChain={defaultChain}
+                            onConnectorConnect={onConnectorConnect}
                             onConnectorDisconnect={onConnectorDisconnect}/> : null}
 
         {availableWallets.includes("WalletConnect") ?
-          <WalletConnectButton onConnectorConnect={onConnectorConnect}
+          <WalletConnectButton defaultChain={defaultChain}
+                               onConnectorConnect={onConnectorConnect}
                                onConnectorDisconnect={onConnectorDisconnect}/> : null}
       </div>
     </div>

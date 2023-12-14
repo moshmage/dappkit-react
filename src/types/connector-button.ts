@@ -10,6 +10,7 @@ export type Props = {
   isActive: boolean;
   activeChainId: number;
   logo?: ReactNode;
+  defaultChain?: number;
 };
 
 export type ConnectorButtonProps = Props & CustomConnectorButtonProps;
