@@ -5,4 +5,8 @@ export type CustomConnectorButtonProps = {
   onConnectorDisconnect?(): void;
   defaultChain?: number;
   onError?(e: Error): void;
+  labels?: {
+    disconnect: string;
+    tryAgain: string;
+  }
 }

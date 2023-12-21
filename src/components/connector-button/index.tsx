@@ -14,7 +14,8 @@ export function ConnectorButton({
                                   logo,
                                   onConnectorDisconnect,
                                   defaultChain = 1,
-                                  onError = (() => {})}: ConnectorButtonProps) {
+                                  onError = (() => {}),
+                                  labels}: ConnectorButtonProps) {
   const {setProvider, address, chainId} = useDappkit()
 
 
@@ -52,9 +53,9 @@ export function ConnectorButton({
   return <div style={{margin: "1rem 0 0", display: "inline-flex", alignItems: "center"}}>
     {isActive
       ? error
-        ? (<button onClick={() => switchChain(defaultChain)} children="try again?"/>)
-        : (<button onClick={() => onDisconnectClick()} children="Disconnect"/>)
-      : (<button onClick={() => switchChain(defaultChain)} children={error ? "try again?" : <>{logo} {getConnectorName(connector) || "Unnamed Implementation"}</>}/>)
+        ? (<button onClick={() => switchChain(defaultChain)} children={labels?.tryAgain || "try again"}/>)
+        : (<button onClick={() => onDisconnectClick()} children={<>{logo} {labels?.disconnect || "Disconnect"}</>}/>)
+      : (<button onClick={() => switchChain(defaultChain)} children={error ? labels?.tryAgain || "try again" : <>{logo} {getConnectorName(connector) || "Unnamed Implementation"}</>}/>)
     }
   </div>
 }

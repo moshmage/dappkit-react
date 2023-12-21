@@ -6,7 +6,7 @@ import {hooks, walletConnect} from "../../../connectors/wallets/wallet-connect";
 import WalletConnectLogo from "./logo";
 import {useDappkit} from "../../../custom-hooks/use-dappkit";
 
-export function WalletConnectButton({onConnectorConnect, onConnectorDisconnect, defaultChain, onError}: CustomConnectorButtonProps) {
+export function WalletConnectButton({onConnectorConnect, onConnectorDisconnect, defaultChain, onError, labels}: CustomConnectorButtonProps) {
   const {isActive, error, chainId, setError} = useConnectorHooks(hooks);
 
   return <ConnectorButton connector={walletConnect}
@@ -18,5 +18,5 @@ export function WalletConnectButton({onConnectorConnect, onConnectorDisconnect, 
                           setError={setError}
                           error={error}
                           defaultChain={defaultChain}
-                          onError={onError}/>
+                          onError={onError} labels={labels}/>
 }

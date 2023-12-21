@@ -6,7 +6,7 @@ import {GnosisSafeButton} from "../connector-button/gnosis-safe";
 import React from "react";
 import {WalletConnectButton} from "../connector-button/wallect-connect";
 
-export function WalletSelector({availableWallets = [], showAddress = true, onConnectorConnect, onConnectorDisconnect, defaultChain, onError}: WalletSelectorProps) {
+export function WalletSelector({availableWallets = [], showAddress = true, onConnectorConnect, onConnectorDisconnect, defaultChain, onError, labels}: WalletSelectorProps) {
   const {address} = useDappkit();
 
   return <>
@@ -23,25 +23,29 @@ export function WalletSelector({availableWallets = [], showAddress = true, onCon
           <CoinbaseButton defaultChain={defaultChain}
                           onConnectorConnect={onConnectorConnect}
                           onConnectorDisconnect={onConnectorDisconnect}
-                          onError={onError}/> : null}
+                          onError={onError}
+                          labels={labels}/> : null}
 
         {availableWallets.includes("Metamask") ?
           <MetamaskButton defaultChain={defaultChain}
                           onConnectorConnect={onConnectorConnect}
                           onConnectorDisconnect={onConnectorDisconnect}
-                          onError={onError}/> : null}
+                          onError={onError}
+                          labels={labels}/> : null}
 
         {availableWallets.includes("GnosisSafe") ?
           <GnosisSafeButton defaultChain={defaultChain}
                             onConnectorConnect={onConnectorConnect}
                             onConnectorDisconnect={onConnectorDisconnect}
-                            onError={onError}/> : null}
+                            onError={onError}
+                            labels={labels}/> : null}
 
         {availableWallets.includes("WalletConnect") ?
           <WalletConnectButton defaultChain={defaultChain}
                                onConnectorConnect={onConnectorConnect}
                                onConnectorDisconnect={onConnectorDisconnect}
-                               onError={onError}/> : null}
+                               onError={onError}
+                               labels={labels}/> : null}
       </div>
     </div>
   </>
