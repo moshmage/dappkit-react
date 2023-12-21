@@ -44,7 +44,7 @@ export const useDappkit = create<UseDappkit>()((set, get) => ({
     if (get().provider?.hasOwnProperty("disconnect"))
       (get().provider as any)?.disconnect();
 
-    set(() => ({connection: null, provider: null}))
+    set(() => ({connection: null, provider: null, address: "", chainId: 0}))
   },
   provider: null,
   connection: null,

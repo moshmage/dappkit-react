@@ -6,7 +6,7 @@ import {ConnectorButton} from "../index";
 import MetamaskLogo from "./logo";
 import {useDappkit} from "../../../custom-hooks/use-dappkit";
 
-export function MetamaskButton({onConnectorConnect, onConnectorDisconnect, defaultChain}: CustomConnectorButtonProps) {
+export function MetamaskButton({onConnectorConnect, onConnectorDisconnect, defaultChain, onError}: CustomConnectorButtonProps) {
   const {isActive, error, chainId, setError} = useConnectorHooks(hooks);
 
   return <ConnectorButton connector={metamaskWallet}
@@ -17,5 +17,6 @@ export function MetamaskButton({onConnectorConnect, onConnectorDisconnect, defau
                           isActive={isActive}
                           setError={setError}
                           error={error}
-                          defaultChain={defaultChain}/>
+                          defaultChain={defaultChain}
+                          onError={onError}/>
 }

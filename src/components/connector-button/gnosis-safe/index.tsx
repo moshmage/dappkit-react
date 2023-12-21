@@ -6,7 +6,7 @@ import {ConnectorButton} from "../index";
 import SafeLogo from "./logo";
 import {useDappkit} from "../../../custom-hooks/use-dappkit";
 
-export function GnosisSafeButton({onConnectorConnect, onConnectorDisconnect, defaultChain}: CustomConnectorButtonProps) {
+export function GnosisSafeButton({onConnectorConnect, onConnectorDisconnect, defaultChain, onError}: CustomConnectorButtonProps) {
   const {isActive, error, chainId, setError} = useConnectorHooks(hooks);
 
   return <ConnectorButton connector={gnosisSafe}
@@ -17,5 +17,6 @@ export function GnosisSafeButton({onConnectorConnect, onConnectorDisconnect, def
                           isActive={isActive}
                           setError={setError}
                           error={error}
-                          defaultChain={defaultChain}/>
+                          defaultChain={defaultChain}
+                          onError={onError}/>
 }

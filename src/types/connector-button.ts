@@ -11,6 +11,7 @@ export type Props = {
   activeChainId: number;
   logo?: ReactNode;
   defaultChain?: number;
+  onError?(e: Error): void;
 };
 
 export type ConnectorButtonProps = Props & CustomConnectorButtonProps;
