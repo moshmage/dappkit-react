@@ -1,22 +1,16 @@
 import {create} from "zustand";
 import type {provider as Provider} from "web3-core";
 import {Web3Connection} from "@taikai/dappkit";
+import {IUseDappkit} from "../types/use-dappkit";
 
-type UseDappkit = {
-  setProvider(p: Provider): Promise<void>,
-  disconnect(): void,
-  provider: Provider|null,
-  connection: Web3Connection|null,
-  chainId?: number,
-  address?: string
-}
 
-export const useDappkit = create<UseDappkit>()((set, get) => ({
+
+export const useDappkit = create<IUseDappkit>()((set, get) => ({
   setProvider: async (provider: Provider) => {
 
     if (!provider) {
       set(() => ({connection: null, provider: null}));
-      return;
+      return null;
     }
 
     const connection = new Web3Connection({web3CustomProvider: provider, autoStart: false});
@@ -36,7 +30,9 @@ export const useDappkit = create<UseDappkit>()((set, get) => ({
       });
     }
 
-    set(() => ({provider, connection, address, chainId, hooks: null}));
+    set(() => ({provider, connection, address, chainId}));
+
+    return connection;
   },
   disconnect: () => {
     if (!get().provider)
@@ -44,7 +40,7 @@ export const useDappkit = create<UseDappkit>()((set, get) => ({
     if (get().provider?.hasOwnProperty("disconnect"))
       (get().provider as any)?.disconnect();
 
-    set(() => ({connection: null, provider: null, address: "", chainId: 0}))
+    set(() => ({connection: null, provider: null, address: "", chainId: 0}));
   },
   provider: null,
   connection: null,
