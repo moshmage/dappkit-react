@@ -26,7 +26,7 @@ export const useDappkit = create<UseDappkit>()((set, get) => ({
     const address = await connection.getAddress();
     const chainId = await connection.getETHNetworkId();
 
-    if ((provider as any).on) {
+    if ((provider as any)?.on) {
       (provider as any).on("chainChanged", (_chain: number) => {
         set(() => ({chainId: _chain}))
       });
@@ -44,7 +44,7 @@ export const useDappkit = create<UseDappkit>()((set, get) => ({
     if (get().provider?.hasOwnProperty("disconnect"))
       (get().provider as any)?.disconnect();
 
-    set(() => ({connection: null, provider: null}))
+    set(() => ({connection: null, provider: null, address: "", chainId: 0}))
   },
   provider: null,
   connection: null,

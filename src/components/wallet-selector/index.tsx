@@ -6,7 +6,7 @@ import {GnosisSafeButton} from "../connector-button/gnosis-safe";
 import React from "react";
 import {WalletConnectButton} from "../connector-button/wallect-connect";
 
-export function WalletSelector({availableWallets = [], showAddress = true, onConnectorConnect, onConnectorDisconnect}: WalletSelectorProps) {
+export function WalletSelector({availableWallets = [], showAddress = true, onConnectorConnect, onConnectorDisconnect, defaultChain, onError, labels}: WalletSelectorProps) {
   const {address} = useDappkit();
 
   return <>
@@ -20,20 +20,32 @@ export function WalletSelector({availableWallets = [], showAddress = true, onCon
       }
       <div className="wallet-selector-buttons">
         {availableWallets.includes("Coinbase") ?
-          <CoinbaseButton onConnectorConnect={onConnectorConnect}
-                          onConnectorDisconnect={onConnectorDisconnect}/> : null}
+          <CoinbaseButton defaultChain={defaultChain}
+                          onConnectorConnect={onConnectorConnect}
+                          onConnectorDisconnect={onConnectorDisconnect}
+                          onError={onError}
+                          labels={labels}/> : null}
 
         {availableWallets.includes("Metamask") ?
-          <MetamaskButton onConnectorConnect={onConnectorConnect}
-                          onConnectorDisconnect={onConnectorDisconnect}/> : null}
+          <MetamaskButton defaultChain={defaultChain}
+                          onConnectorConnect={onConnectorConnect}
+                          onConnectorDisconnect={onConnectorDisconnect}
+                          onError={onError}
+                          labels={labels}/> : null}
 
         {availableWallets.includes("GnosisSafe") ?
-          <GnosisSafeButton onConnectorConnect={onConnectorConnect}
-                            onConnectorDisconnect={onConnectorDisconnect}/> : null}
+          <GnosisSafeButton defaultChain={defaultChain}
+                            onConnectorConnect={onConnectorConnect}
+                            onConnectorDisconnect={onConnectorDisconnect}
+                            onError={onError}
+                            labels={labels}/> : null}
 
         {availableWallets.includes("WalletConnect") ?
-          <WalletConnectButton onConnectorConnect={onConnectorConnect}
-                               onConnectorDisconnect={onConnectorDisconnect}/> : null}
+          <WalletConnectButton defaultChain={defaultChain}
+                               onConnectorConnect={onConnectorConnect}
+                               onConnectorDisconnect={onConnectorDisconnect}
+                               onError={onError}
+                               labels={labels}/> : null}
       </div>
     </div>
   </>
