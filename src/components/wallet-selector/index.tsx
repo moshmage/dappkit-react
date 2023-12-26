@@ -7,11 +7,8 @@ import React from "react";
 import {WalletConnectButton} from "../connector-button/wallect-connect";
 
 export function WalletSelector({availableWallets = [], showAddress = true, onConnectorConnect, onConnectorDisconnect, defaultChain, onError, labels}: WalletSelectorProps) {
-  const {address} = useDappkit();
-
   return <>
     <div className="wallet-selector-container">
-      <div><span className="wallet-connected-address">{address}</span></div>
       {(!availableWallets.length)
         ? <div>
           <div className="wallet-selector-no-options">No allowed list provided</div>

@@ -6,15 +6,13 @@ $ npm install -s @layerx-labs/dappkit-react
 ## Usage
 
 ### Available hooks
+
 ```tsx
-import {useDappkitConnection, useDappkitConnectionInfo} from "./use-dappkit";
+import {useDappkit,} from "./use-dappkit";
 // ... your component
 
 // share this connection with your other dappkit classes
-const {connection} = useDappkitConnection();
-
-// check connection address, chainId and connected status
-const {address, chainId, connected} = useDappkitConnectionInfo(); 
+const {connection} = useDappkit();
 ```
 
 ### Wallet selector
@@ -24,19 +22,19 @@ import {WalletSelector, ConnectorsNames} from "@layerx-labs/dappkit-react";
 
 const [showModal, setShowModal] = useState(false);
 // .. your component
-<WalletSelector availableWallets={[ConnectorsNames.Metamask, ConnectorsNames.Coinbase]}
-                showAddress={true} 
-                reloadOnProviderDisconnect={true}/>
+<WalletSelector availableWallets={[ConnectorsNames.Metamask, ConnectorsNames.Coinbase]} />
 ```
-> On wallet selection, `WalletSelector` component will update the values of `useDappkitConnectionInfo()`
-```ts
-import {useDappkitConnectionInfo} from "@layerx-labs/dappkit-react";
 
-const {address} = useDappkitConnectionInfo();
+> Get notified of chain-id and address changes,
+
+```ts
+import {useDappkit} from "@layerx-labs/dappkit-react";
+
+const {address, chainId} = useDappkit();
 
 useEffect(() => {
-  console.log(`Connected address`, address);
-}, [address])
+  console.log(`Info`, address, chainId);
+}, [address, chainId])
 ```
 
 **Supported Wallets**
@@ -52,13 +50,13 @@ useEffect(() => {
 
 ```ts
 import {ERC20} from "@taikai/dappkit";
-import {useDappkitConnection} from "@layerx-labs/dappkit-react";
+import {useDappkit} from "@layerx-labs/dappkit-react";
 import {useEffect, useState} from "react";
 
 function useERC20(tokenAddress: string) {
   const [token, setToken] = useState<ERC20 | null>(null);
 
-  const {connection} = useDappkitConnection();
+  const {connection} = useDappkit();
 
   useEffect(() => {
     if (!connection) {
