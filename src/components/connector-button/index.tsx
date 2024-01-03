@@ -19,6 +19,7 @@ export function ConnectorButton({
   const {setProvider, address, chainId} = useDappkit()
 
 
+
   const switchChain = useCallback(
     async (_desiredChainId?: number) => {
 
@@ -27,8 +28,8 @@ export function ConnectorButton({
 
         await connector.activate(_desiredChainId);
         if (connector.provider) {
-          await setProvider(connector.provider as unknown as Provider);
-          onConnectorConnect?.(connector.provider as unknown as Provider, address!, chainId!);
+          const connection = await setProvider(connector.provider as unknown as Provider);
+          onConnectorConnect?.(connection!, address!, chainId!);
         } else throw new Error(`Failed to get a provider, make sure your connector has one!`)
 
       } catch (e: any) {

@@ -1,7 +1,7 @@
-import type {provider as Provider} from "web3-core";
+import {Web3Connection} from "@taikai/dappkit";
 
 export type CustomConnectorButtonProps = {
-  onConnectorConnect?(p: Provider, address: string, chainId: number): void;
+  onConnectorConnect?(c: Web3Connection, address: string, chainId: number): void;
   onConnectorDisconnect?(): void;
   defaultChain?: number;
   onError?(e: Error): void;
