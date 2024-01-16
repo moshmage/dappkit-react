@@ -63,6 +63,7 @@
     "README.MD"
   ],
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org"
   },
   "jest": {

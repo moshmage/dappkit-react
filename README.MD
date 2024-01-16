@@ -28,7 +28,7 @@ const [showModal, setShowModal] = useState(false);
 > Get notified of chain-id and address changes,
 
 ```ts
-import {useDappkit} from "@layerx-labs/dappkit-react";
+import {useDappkit} from "@taikai/dappkit-react";
 
 const {address, chainId} = useDappkit();
 
@@ -50,7 +50,7 @@ useEffect(() => {
 
 ```ts
 import {ERC20} from "@taikai/dappkit";
-import {useDappkit} from "@layerx-labs/dappkit-react";
+import {useDappkit} from "@taikai/dappkit-react";
 import {useEffect, useState} from "react";
 
 function useERC20(tokenAddress: string) {
