@@ -1,12 +1,11 @@
 {
-  "name": "dappkit-react",
+  "name": "@taikai/dappkit-react",
   "version": "0.1.6",
   "private": false,
   "scripts": {
     "pre:bundle": "rimraf dist/",
     ":bundle": "tsc",
-    "test": "jest",
-    "prepublishOnly": "npm run :bundle"
+    "test": "jest"
   },
   "browserslist": {
     "production": [
