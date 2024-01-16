@@ -1,4 +1,4 @@
-# @layerx-labs/dappkit-react
+# @taikai/dappkit-react
 ```bash
 $ npm install -s @layerx-labs/dappkit-react
 ```
