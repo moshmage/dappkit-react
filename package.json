@@ -1,11 +1,12 @@
 {
-  "name": "@layerx-labs/dappkit-react",
-  "version": "0.1.5",
+  "name": "dappkit-react",
+  "version": "0.1.6",
   "private": false,
   "scripts": {
     "pre:bundle": "rimraf dist/",
     ":bundle": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "npm run :bundle"
   },
   "browserslist": {
     "production": [
