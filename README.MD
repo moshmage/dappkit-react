@@ -1,6 +1,6 @@
 # @taikai/dappkit-react
 ```bash
-$ npm install -s @layerx-labs/dappkit-react
+$ npm install -s @taikai/dappkit-react
 ```
 
 ## Usage
