@@ -62,7 +62,9 @@
     "dist/",
     "README.MD"
   ],
-  "homepage": "https://moshmage.github.io/dappkit-react",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "jest": {
     "testEnvironment": "jsdom",
     "collectCoverage": true,
